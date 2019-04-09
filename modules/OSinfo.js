@@ -1,5 +1,6 @@
 var os = require('os');
-var timeToHours = require('./time');
+var colors = require('colors');
+var timeToHours = require('./modules/time.js');
 
 function getOSinfo() {
 	var type = os.type();
@@ -13,12 +14,12 @@ function getOSinfo() {
 	    type = 'Windows';
 	}
 
-	console.log('System:', type);
-	console.log('Release:', release);
-	console.log('CPU model:', cpu);
-	console.log('Uptime:', timeToHours.print());
-	console.log('User name:', userInfo.username);
-	console.log('Home dir:', userInfo.homedir);		
+	console.log(colors.bold.magenta('System:'),colors.underline (type));
+	console.log(colors.bold.red('Release:'), colors.underline(release));
+	console.log(colors.bold.blue('CPU model:'), colors.underline(cpu));
+	console.log(colors.bold.green('Uptime:'), colors.underline(timeToHours.print()));
+	console.log(colors.bold.yellow('User name:'), colors.underline(userInfo.username));
+	console.log(colors.bold.cyan('Home dir:'), colors.underline(userInfo.homedir));		
 };
 
 exports.print = getOSinfo;
